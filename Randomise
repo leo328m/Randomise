@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Randomise</title>
+</head>
+<body>
+<h1>Randomise</h1>
+<canvas id="canvas" width="2000" height="2000"></canvas>
+   <script src="https://code.jquery.com/jquery-2.1.0.js"></script>
+<script>
+   var canvas = document.getElementById("canvas");
+    var ctx = canvas.getContext("2d");
+	
+//
+var n = prompt("How many parts to divide the coordinate axis?");
+		
+// шрифт
+ctx.font = "18px Arial";
+ ctx.textAlign = "left";
+ ctx.textBaseline = "bottom";		
+ctx.strokeStyle = "DeepPink";
+ctx.fillStyle = "Blue";
+ctx.lineWidth = 4;
+//
+z=prompt("Enter the number of random points");
+// 
+w1=prompt("Enter the field width for displaying random points");
+// 
+w2=prompt("Enter the height of the field to display random points");	
+//
+var circle = function (x, y, radius, fillCircle) {
+	      ctx.beginPath();
+      ctx.arc(x,y, 3, 0, Math.PI * 2, false);
+            ctx.stroke();
+};
+//
+for (i=0;i<z;i++)	{
+//
+var x=Math.floor(Math.random() * w1);
+var y=Math.floor(Math.random() * w2);
+//
+circle(x,y,3,false);
+};	
+
+// оси
+	var canvas = document.getElementById("canvas");
+	var ctx = canvas.getContext("2d");
+	ctx.strokeStyle = "Turquoise";
+	ctx.lineWidth = 4;
+	//ось ординат
+	ctx.beginPath();
+	ctx.moveTo(2, w2);
+	ctx.lineTo(2, 2);
+	//ось абсцисс
+	ctx.moveTo(2, w2);
+	ctx.lineTo(w1, w2);
+	ctx.stroke();
+
+//
+ for (i=1; i<(n); i++) {
+ // 
+ ctx.strokeStyle = "Black";
+ ctx.lineWidth = 1;
+
+ // 
+	ctx.beginPath();
+	ctx.moveTo(w1*i/n,1);
+	ctx.lineTo(w1*i/n,w2);
+	ctx.stroke();
+ 
+ //
+	ctx.beginPath();
+	ctx.moveTo(4, ((w2*(n-i))/n));
+	ctx.lineTo(w1,((w2*(n-i))/n));
+	ctx.stroke();
+ 
+  //
+ctx.fillText(i,(w1*i/n),w2);
+ //
+ctx.fillText(i,4, ((w2*(n-i))/n));
+	
+};	
+
+// 
+ctx.beginPath();
+	ctx.moveTo(w1,w2);
+	ctx.lineTo(w1,1);
+	ctx.stroke();
+	
+// 
+ctx.beginPath();
+	ctx.moveTo(1,1);
+	ctx.lineTo(w1,1);
+	ctx.stroke();	
+	
+</script>
+</body>
+</html>
